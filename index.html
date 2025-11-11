@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Luxe Grooming - Luxury Grooming • Anywhere • Anytime</title>
+    
+    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+
+   <header>
+        <div class="container nav-content">
+            
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+
+            <div class="logo-text-center">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+
+            <nav>
+                <ul class="desktop-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html" class="nav-cta-book desktop-book-btn">Book Now</a></li>
+                </ul>
+
+                <ul class="slide-out-menu">
+                    <li class="nav-close-btn">
+                        <i class="fas fa-times"></i>
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    
+                    <li class="nav-divider"></li>
+                    <li><a href="account.html" class="nav-account" style="display: none;">My Account</a></li>
+                    <li><a href="signin.html" class="nav-signin">Sign In / Sign Up</a></li>
+                    <li><a href="#" class="nav-signout" style="display: none;">Sign Out</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <a href="https://wa.me/yourwhatsappnumber" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <section id="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="images/headervideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="hero-overlay">
+            <h1>The Mark of Prestige</h1>
+            <p>Premium grooming delivered to your doorstep.</p>
+           <div class="cta-buttons-container">
+                <div class="cta-top-row">
+                    <a href="bookings.html" class="cta-book">Book an Experience</a>
+                    <a href="membership.html" class="cta-subscribe">Subscribe</a>
+                </div>
+                <div class="cta-bottom-row">
+                    <a href="membership.html" class="cta-member">Join the Elite (Black Card Membership)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="value-prop" class="section">
+        <div class="container">
+            <div class="prop-grid">
+                <div class="prop-tile">
+                    <i class="fas fa-crown fa-3x"></i>
+                    <h3>Exclusivity</h3>
+                    <p>Reserved for Abuja's most discerning clientele.</p>
+                </div>
+                <div class="prop-tile">
+                    <i class="fas fa-shield-alt fa-3x"></i>
+                    <h3>Privacy</h3>
+                    <p>Discreet service in our unmarked luxury vans.</p>
+                </div>
+                <div class="prop-tile">
+                    <i class="fas fa-gem fa-3x"></i>
+                    <h3>Prestige</h3>
+                    <p>A statement of success, luxury grooming redefined.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <section id="services" class="section">
+        <div class="container">
+            <h2 style="color: var(--color-gold);">What We Offer</h2>
+            <p style="text-align: center; max-width: 600px; margin: -20px auto 50px; font-size: 1.1rem;">
+                A comprehensive suite of grooming and wellness services, all available in our mobile studio.
+            </p>
+            
+            <div class="service-list-grid">
+                <div class="service-list-item">
+                    <i class="fas fa-cut"></i>
+                    <h3>Haircuts & Styling</h3>
+                    <p>Precision cutting and styling for men, women, and children.</p>
+                </div>
+                <div class="service-list-item">
+                    <i class="fas fa-male"></i>
+                    <h3>Beard Styling & Hot Towel</h3>
+                    <p>Expert sculpting, trimming, and a relaxing hot towel facial massage.</p>
+                </div>
+                <div class="service-list-item">
+                    <i class="fas fa-hand-sparkles"></i>
+                    <h3>Manicure & Pedicure</h3>
+                    <p>Impeccable nail care for a polished, professional look.</p>
+                </div>
+                <div class="service-list-item">
+                    <i class="fas fa-spa"></i>
+                    <h3>Massage Therapy</h3>
+                    <p>Therapeutic massage to relieve stress and rejuvenate.</p>
+                </div>
+                <div class="service-list-item">
+                    <i class="fas fa-smile"></i>
+                    <h3>Facial Treatments</h3>
+                    <p>Cleansing and revitalizing facial treatments for healthy skin.</p>
+                </div>
+                <div class="service-list-item">
+                    <i class="fas fa-ring"></i>
+                    <h3>Bridal & Wedding Crew</h3>
+                    <p>On-site grooming for your entire wedding party.</p>
+                </div>
+                <div class="service-list-item">
+                    <i class="fas fa-building-columns"></i>
+                    <h3>Embassy & Diplomatic Retainers</h3>
+                    <p>Discreet, on-demand grooming for diplomatic staff and delegations.</p>
+                </div>
+                <div class="service-list-item">
+                    <i class="fas fa-landmark"></i>
+                    <h3>Government Agency Contracts</h3>
+                    <p>Secure and professional grooming services for government officials.</p>
+                </div>
+                <div class="service-list-item">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Corporate Executive Plans</h3>
+                    <p>Retainers to provide regular grooming for your C-Suite team.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="home-about" class="section">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="images/founder-portrait.jpeg" alt="Igwe Silver Akachukwu">
+            </div>
+            <div class="about-text">
+                <span class="gold-subtitle">The Founder</span>
+                <h2>Igwe Silver Akachukwu</h2>
+                <p>Silver Luxe Grooming is the brainchild of Igwe Silver Akachukwu, a grooming professional with over 8 years of hands-on experience in VIP grooming services. Since 2018, his career has been defined by serving an exclusive clientele, where he mastered the nuances of premium customer care, discretion, and the refined etiquette that elevates grooming into a luxury experience.</p>
+                
+                <p>Through this intimate understanding of the VIP world, he identified a critical inefficiency: for his high-value clients, the one true, non-negotiable luxury is <strong>time</strong>. The traditional model—the commute, the waiting room, the lack of true privacy—was a tax on their productivity.</p>
+                
+                <a href="about.html" class="card-cta" style="max-width: 250px;">Read The Full Story</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="client-highlight" class="section">
+        <div class="container">
+            <h2>Grooming for VIPs, Executives, Celebrities, HNIs</h2>
+            <p>Your Privacy, Hygiene, Exclusivity, Convenience and Time is our highest priority.</p>
+            <div class="client-images">
+                <div class="client-img-placeholder"></div>
+                <div class="client-img-placeholder"></div>
+                <div class="client-img-placeholder"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="podcast-cta" class="section">
+        <div class="container">
+            <i class="fas fa-microphone-alt fa-3x"></i>
+            <h2>Silver Luxe Conversations</h2>
+            <p>Live grooming. Smart conversations. Exclusively inside the van.</p>
+            <a href="podcast.html" class="cta-book">Watch Episodes</a>
+        </div>
+    </section>
+
+    <section id="bottom-cta" class="section">
+        <div class="container">
+            <h2>Join Abuja’s Elite Grooming Movement</h2>
+            <a href="membership.html" class="cta-member">Request Membership</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 15px;">&copy; Silver Luxe Grooming 2025</p>
+            <p class="footer-note">Powered by Prestige</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;"><a href="terms.html" style="margin-right: 10px;">Terms</a> | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

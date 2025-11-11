@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "https_edge_runtime": "https://deno.land/x/edge_runtime/mod.ts"
+  }
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Silver Luxe Grooming</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+
+            <div class="logo-text-center">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+
+            <nav>
+                <ul class="desktop-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html" class="nav-cta-book desktop-book-btn">Book Now</a></li>
+                </ul>
+
+                <ul class="slide-out-menu">
+                    <li class="nav-close-btn">
+                        <i class="fas fa-times"></i>
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    
+                    <li class="nav-divider"></li>
+                    <li><a href="account.html" class="nav-account" style="display: none;">My Account</a></li>
+                    <li><a href="signin.html" class="nav-signin">Sign In / Sign Up</a></li>
+                    <li><a href="#" class="nav-signout" style="display: none;">Sign Out</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <a href="https://wa.me/2348134519733" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <section class="page-hero" id="contact-hero">
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1>Contact Us</h1>
+                <p>We're Ready to Assist You</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-page" class="section">
+        <div class="container">
+            <div class="contact-container">
+                
+                <div class="contact-info">
+                    <h2 style="text-align: left;">Get in Touch</h2>
+                    <p style="margin-bottom: 30px;">For bookings, corporate inquiries, or media requests, please reach out. Our concierge team is available 24/7.</p>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <span class="gold-subtitle">Phone</span>
+                            <a href="tel:+2348134519733">+234-813-451-9733</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <span class="gold-subtitle">WhatsApp</span>
+                            <a href="https://wa.me/2348134519733" target="_blank">+234-813-451-9733</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span class="gold-subtitle">Email</span>
+                            <a href="mailto:info@silverluxegrooming.com">info@silverluxegrooming.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="gold-subtitle">Head Office</span>
+                            <p>FCT - Abuja, Nigeria</p>
+                        </div>
+                    </div>
+
+                    <hr class="gold-divider" style="margin: 30px 0;">
+                    
+                    <div class="social-icons-contact">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Twitter/X"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <form class="contact-form booking-form">
+                    <h3>Send a Secure Message</h3>
+                    
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                    
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="Booking Inquiry">Booking Inquiry</option>
+                        <option value="Membership">Membership Inquiry</option>
+                        <option value="Corporate">Corporate Package</option>
+                        <option value="Media/PR">Media & PR</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Type your message here..." rows="6" required></textarea>
+                    
+                    <button type="submit" class="cta-book" style="width: 100%; margin-top: 20px; font-size: 1.1rem; padding: 18px 30px;">Send Message</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 15px;">&copy; Silver Luxe Grooming 2025</p>
+            <p class="footer-note">Powered by Prestige</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;"><a href="terms.html" style="margin-right: 10px;">Terms</a> | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Silver Luxe Grooming</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+
+   <header>
+        <div class="container nav-content">
+            
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+
+            <div class="logo-text-center">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+
+            <nav>
+                <ul class="desktop-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html" class="nav-cta-book desktop-book-btn">Book Now</a></li>
+                </ul>
+
+                <ul class="slide-out-menu">
+                    <li class="nav-close-btn">
+                        <i class="fas fa-times"></i>
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    
+                    <li class="nav-divider"></li>
+                    <li><a href="account.html" class="nav-account" style="display: none;">My Account</a></li>
+                    <li><a href="signin.html" class="nav-signin">Sign In / Sign Up</a></li>
+                    <li><a href="#" class="nav-signout" style="display: none;">Sign Out</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <a href="https://wa.me/yourwhatsappnumber" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+   <section class="page-hero" id="gallery-hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="images/beverages.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1>The Experience</h1>
+                <p>Inside the Mobile Sanctuary</p>
+            </div>
+        </div>
+    </section>
+    <section id="before-after" class="section">
+        <div class="container">
+            <h2 style="color: var(--color-gold);">The Transformation</h2>
+            <p style="text-align: center; max-width: 600px; margin: -20px auto 50px; font-size: 1.1rem;">
+                Precision, refinement, and unparalleled results.
+            </p>
+
+            <div class="ba-slider-container">
+                <div class="ba-slider">
+                    <img src="images/after.jpg" alt="After Grooming">
+                    <div class="ba-image-before">
+                        <img src="images/before.jpg" alt="Before Grooming">
+                    </div>
+                    <input type="range" class="ba-slider-range" min="0" max="100" value="50" aria-label="Percentage of before/after image shown">
+                    <div class="ba-slider-handle">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery-grid" class="section">
+        <div class="container">
+            <h2>Luxury in Motion</h2>
+           <div class="gallery-grid">
+                <div class="gallery-item">
+                    <video src="images/servicecut.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="gallery-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <video src="images/beverages.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="gallery-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <video src="images/toolsetup.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="gallery-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <video src="images/gallery-4.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="gallery-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <video src="images/gallery-5.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="gallery-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <video src="images/gallery-6.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="gallery-overlay"><i class="fas fa-play"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <footer>
+        <div class="container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 15px;">&copy; Silver Luxe Grooming 2025</p>
+            <p class="footer-note">Powered by Prestige</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;"><a href="terms.html" style="margin-right: 10px;">Terms</a> | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Experience - Silver Luxe Grooming</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+
+            <div class="logo-text-center">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+
+            <nav>
+                <ul class="desktop-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html" class="nav-cta-book desktop-book-btn">Book Now</a></li>
+                </ul>
+
+                <ul class="slide-out-menu">
+                    <li class="nav-close-btn">
+                        <i class="fas fa-times"></i>
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    
+                    <li class="nav-divider"></li>
+                    <li><a href="account.html" class="nav-account" style="display: none;">My Account</a></li>
+                    <li><a href="signin.html" class="nav-signin">Sign In / Sign Up</a></li>
+                    <li><a href="#" class="nav-signout" style="display: none;">Sign Out</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <a href="https://wa.me/yourwhatsappnumber" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </div>
+
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <div class="cart-close-btn"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="cart-items">
+            <p class="cart-empty">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal-price">₦0</span>
+            </div>
+            <a href="bookings.html#booking-form-section" class="card-cta cta-gold" id="checkout-btn">Proceed to Checkout</a>
+        </div>
+    </div>
+    <div class="cart-overlay"></div> 
+
+    <section class="page-hero" id="booking-hero">
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1>Book Your Experience</h1>
+                <p>Reserve Your Private Mobile Appointment</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="a-la-carte-booking" class="section">
+        <div class="container">
+            <h2 style="color: var(--color-gold);">One-Off Services</h2>
+            <p style="text-align: center; max-width: 600px; margin: -20px auto 50px; font-size: 1.1rem;">
+                Select one or more services. You can adjust quantities in the cart.
+            </p>
+
+            <div class="booking-service-grid">
+                <div class="booking-service-item" data-id="1" data-name="Haircut & Hot Towel" data-price="60000">
+                    <div class="item-info"><h3>Haircut & Hot Towel Massage</h3><span class="item-price">₦60,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item" data-id="2" data-name="Beard Sculpting" data-price="30000">
+                    <div class="item-info"><h3>Beard Sculpting</h3><span class="item-price">₦30,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item" data-id="3" data-name="Hair Colouring" data-price="40000">
+                    <div class="item-info"><h3>Hair Colouring/Tinting</h3><span class="item-price">₦40,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item" data-id="4" data-name="Kids (Under 10)" data-price="30000">
+                    <div class="item-info"><h3>Kids (Under 10)</h3><span class="item-price">₦30,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item" data-id="5" data-name="Teens (Under 18)" data-price="40000">
+                    <div class="item-info"><h3>Teens (Under 18)</h3><span class="item-price">₦40,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item" data-id="6" data-name="Facial Scrub/Mask" data-price="40000">
+                    <div class="item-info"><h3>Facial Scrub/Mask</h3><span class="item-price">₦40,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item" data-id="7" data-name="In Van Grooming" data-price="40000">
+                    <div class="item-info"><h3>In-Van Grooming (Client come to us)</h3><span class="item-price">₦40,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item wide-item" data-id="8" data-name="Haircut & Facials" data-price="100000">
+                    <div class="item-info"><h3>Package: Haircut & Facials</h3><span class="item-price">₦100,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item wide-item" data-id="9" data-name="Haircut, Facials, Pedi & Mani" data-price="150000">
+                    <div class="item-info"><h3>Package: Haircut, Facials, Pedi & Mani</h3><span class="item-price">₦150,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item wide-item" data-id="10" data-name="Full Package (All Inclusive)" data-price="200000">
+                    <div class="item-info"><h3>Package: Haircut, Facials, Pedi, Mani & Massage</h3><span class="item-price">₦200,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+                <div class="booking-service-item" data-id="11" data-name="Manicure" data-price="20000">
+                    <div class="item-info"><h3>Manicure</h3><span class="item-price">₦20,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+
+                <div class="booking-service-item" data-id="12" data-name="Pedicure" data-price="30000">
+                    <div class="item-info"><h3>Pedicure</h3><span class="item-price">₦30,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+
+                <div class="booking-service-item wide-item" data-id="13" data-name="Pedicure & Manicure" data-price="50000">
+                    <div class="item-info"><h3>Package: Pedicure & Manicure</h3><span class="item-price">₦50,000</span></div>
+                    <button class="add-to-cart-btn">Add</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking-form-section" class="section">
+        <div class="container">
+            <h2>Complete Your Booking</h2>
+            <div class="booking-checkout-layout">
+                
+                <form class="booking-form" action="payment.html">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Full Name" required>
+                    
+                    <label for="phone">Phone Number (WhatsApp Enabled)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    
+                    <label for="gender">Title</label>
+                    <select id="gender" name="gender">
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Prof.">Prof.</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    
+                    <label for="location-type">Location Type</label>
+                    <select id="location-type" name="location-type">
+                        <option value="home">Home</option>
+                        <option value="office">Office</option>
+                        <option value="hotel">Hotel</option>
+                    </select>
+
+                    <label for="location">Full Address (Apt/Room #)</label>
+                    <input type="text" id="location" name="location" placeholder="Enter your full address" required>
+
+                    <label for="date">Preferred Date & Time</label>
+                    <div class="date-time-grid">
+                        <input type="date" id="date" name="date" required>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+
+                    <label for="requests">Special Requests?</label>
+                    <textarea id="requests" name="requests" placeholder="e.g., Allergies, style notes, preferred barber"></textarea>
+                    
+                    <button type="submit" class="cta-book" style="width: 100%; margin-top: 20px;">Confirm & Request Booking</button>
+                </form>
+
+                <div class="order-summary">
+                    <h3>Your Order</h3>
+                    <div class="order-summary-items">
+                        <p class="cart-empty">Your cart is empty. <a href="services.html" style="text-decoration: underline;">Add services</a>.</p>
+                    </div>
+                    <div class="order-summary-total">
+                        <span>Subtotal</span>
+                        <span id="summary-subtotal-price">₦0</span>
+                    </div>
+                    <div class="trust-seals">
+                        <div><i class="fas fa-shield-alt"></i> Fully Insured</div>
+                        <div><i class="fas fa-pump-medical"></i> UV-Sterilized Tools</div>
+                        <div><i class="fas fa-lock"></i> Private & Confidential</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section" style="background-color: #000;">
+        <div class="container">
+            <h2 style="color: var(--color-gold);">Or, Become a Member</h2>
+            <p style="text-align: center; max-width: 600px; margin: -20px auto 50px; font-size: 1.1rem;">
+                Join our elite plans for unlimited access and priority booking.
+            </p>
+
+            <div class="pricing-grid">
+                <div class="service-card">
+                    <div class="card-header">
+                        <h3>Classic Plan</h3>
+                        <span class="price">₦300k<span class="per-month">/Month</span></span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Unlimited Haircuts</li>
+                        <li><i class="fas fa-check"></i> Facials (Twice/Month)</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Manicure & Pedicure</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Monthly Massage</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Priority Booking</li>
+                    </ul>
+                    <a href="signin.html" class="card-cta select-plan-btn" data-plan-id="classic-plan">Select Plan</a>
+                </div>
+
+                <div class="service-card recommended">
+                    <div class="recommended-badge">Recommended</div>
+                    <div class="card-header">
+                        <h3>Executive Plan</h3>
+                        <span class="price">₦525k<span class="per-month">/Month</span></span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Unlimited Haircuts</li>
+                        <li><i class="fas fa-check"></i> Unlimited Facials</li>
+                        <li><i class="fas fa-check"></i> Manicure & Pedicure</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Monthly Massage</li>
+                        <li class="disabled"><i class="fas fa-times"></i> Priority Booking</li>
+                    </ul>
+                    <a href="signin.html" class="card-cta cta-gold select-plan-btn" data-plan-id="executive-plan">Select Plan</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-header">
+                        <h3>Prestige Plan</h3>
+                        <span class="price">₦750k<span class="per-month">/Month</span></span>
+                    </div>
+                    <ul class="features">
+                        <li><i class="fas fa-check"></i> Unlimited Haircuts</li>
+                        <li><i class="fas fa-check"></i> Facials (Twice/Month)</li>
+                        <li><i class="fas fa-check"></i> Manicure & Pedicure</li>
+                        <li><i class="fas fa-check"></i> Monthly Massage</li>
+                        <li><i class="fas fa-check"></i> Priority Booking</li>
+                    </ul>
+                    <a href="signin.html" class="card-cta select-plan-btn" data-plan-id="prestige-plan">Select Plan</a>
+                </div>
+            </div>
+
+            <div class="black-card-section section">
+                <div class="black-card-content">
+                    <img src="images/logo.jpeg" alt="Black Card Monogram" class="black-card-logo"> 
+                    <h2>The Black Card</h2>
+                    <span class="black-card-price">₦20M / Year</span>
+                    <p class="black-card-limit">Exclusive to 7 Clients Per Van</p>
+                    <hr class="gold-divider">
+                    <ul class="black-card-features">
+                        <li><i class="fas fa-check-double"></i> Daily Standby Service Availability</li>
+                        <li><i class="fas fa-check-double"></i> All Services Included (Waxing, Massage, etc.)</li>
+                        <li><i class="fas fa-check-double"></i> Completely Unbranded Van for Total Privacy</li>
+                        <li><i class="fas fa-check-double"></i> Premium In-Van Beverages</li>
+                        <li><i class="fas fa-check-double"></i> Personal Concierge Support</li>
+                    </ul>
+                    <a href="signin.html" class="card-cta cta-black select-plan-btn" data-plan-id="black-card">Request Membership</a>
+                </div>
+                <div class="black-card-image">
+                    <i class="fas fa-credit-card fa-10x" style="color: #111; filter: drop-shadow(0 10px 15px rgba(212, 175, 55, 0.2));"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 15px;">&copy; Silver Luxe Grooming 2025</p>
+            <p class="footer-note">Powered by Prestige</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;"><a href="terms.html" style="margin-right: 10px;">Terms</a> | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

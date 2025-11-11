@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirming Payment - Silver Luxe Grooming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+    <header>
+        <div class="container nav-content" style="justify-content: center;">
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+            <div class="logo-text-center" style="position: static; transform: none; display: flex; pointer-events: auto;">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section section">
+        <div class="container">
+            <div class="auth-container confirmation-box">
+                
+                <div class="confirmation-spinner">
+                    <div class="loader-spinner"></div>
+                    <div class="success-tick" style="display: none;">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+
+                <h2 id="confirmation-title" style="color: var(--color-gold);">Confirming Payment...</h2>
+                <p id="confirmation-text">Please hold on. We are confirming your bank transfer. This can take up to 15 minutes.</p>
+
+                <div id="countdown-timer">15:00</div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

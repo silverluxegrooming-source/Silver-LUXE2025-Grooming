@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Session - Silver Luxe Grooming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+    
+    <header>
+        <div class="container nav-content" style="justify-content: center;">
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+            <div class="logo-text-center" style="position: static; transform: none; display: flex; pointer-events: auto;">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section section">
+        <div class="container">
+            <div class="auth-container" style="max-width: 800px; text-align: left;">
+                <h2 style="text-align: center;">Schedule Your Session</h2>
+                <p style="text-align: center; color: #999;">Welcome back. Let's get you booked in.</p>
+                
+                <form class="booking-form" id="schedule-form" action="#">
+                    
+                    <label for="date">Preferred Date & Time</label>
+                    <div class="date-time-grid">
+                        <input type="date" id="date" name="date" required>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="e.g., Home, Office" required>
+
+                    <label for="requests">Special Requests?</label>
+                    <textarea id="requests" name="requests" placeholder="e.g., Please bring the usual (Whiskey)"></textarea>
+                    
+                    <button type="submit" class="cta-book" style="width: 100%; margin-top: 20px;">Confirm Schedule</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

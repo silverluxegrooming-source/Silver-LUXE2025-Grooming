@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast - Silver Luxe Conversations</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+
+   <header>
+        <div class="container nav-content">
+            
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+
+            <div class="logo-text-center">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+
+            <nav>
+                <ul class="desktop-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html" class="nav-cta-book desktop-book-btn">Book Now</a></li>
+                </ul>
+
+                <ul class="slide-out-menu">
+                    <li class="nav-close-btn">
+                        <i class="fas fa-times"></i>
+                    </li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    
+                    <li class="nav-divider"></li>
+                    <li><a href="account.html" class="nav-account" style="display: none;">My Account</a></li>
+                    <li><a href="signin.html" class="nav-signin">Sign In / Sign Up</a></li>
+                    <li><a href="#" class="nav-signout" style="display: none;">Sign Out</a></li>
+                </ul>
+                
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+
+        </div>
+    </header>
+
+    <a href="https://wa.me/yourwhatsappnumber" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <section class="page-hero" id="podcast-hero">
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1>Silver Luxe Conversations</h1>
+                <p>Live Grooming. Smart Conversations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="audio-player-section" class="section">
+        <div class="container">
+            <div class="audio-player-container">
+                <div class="audio-info">
+                    <span class="gold-subtitle">Now Playing</span>
+                    <h3>Episode 01: The Future of Luxury in Africa</h3>
+                    <p>Listen to the full audio experience on your favorite platform.</p>
+                </div>
+                <div class="audio-player-controls">
+                    <i class="fas fa-backward"></i>
+                    <i class="fas fa-play-circle" style="font-size: 3rem;"></i>
+                    <i class="fas fa-forward"></i>
+                </div>
+                <a href="https://open.spotify.com/your-podcast-link" target="_blank" class="spotify-btn">
+                    <i class="fab fa-spotify"></i> Listen on Spotify
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="podcast-grid-section" class="section">
+        <div class="container">
+            <h2>Watch All Episodes</h2>
+            
+            <div class="podcast-grid">
+                <a href="YOUR_YOUTUBE_LINK_HERE" target="_blank" class="podcast-item">
+                    <video src="images/podcast-ep-1.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="podcast-overlay">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="podcast-info">
+                        <h3>Ep. 01: The Future of Luxury</h3>
+                        <span>Watch on YouTube</span>
+                    </div>
+                </a>
+
+                <a href="YOUR_YOUTUBE_LINK_HERE" target="_blank" class="podcast-item">
+                    <video src="images/podcast-ep-2.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="podcast-overlay">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="podcast-info">
+                        <h3>Ep. 02: A Day in the Mobile Van</h3>
+                        <span>Watch on YouTube</span>
+                    </div>
+                </a>
+
+                <a href="YOUR_YOUTUBE_LINK_HERE" target="_blank" class="podcast-item">
+                    <video src="images/podcast-ep-3.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="podcast-overlay">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="podcast-info">
+                        <h3>Ep. 03: Grooming for High-Profile Clients</h3>
+                        <span>Watch on YouTube</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="podcast-cta-request" class="section">
+        <div class="container" style="text-align: center;">
+            <i class="fas fa-microphone-alt fa-3x" style="color: var(--color-gold); margin-bottom: 20px;"></i>
+            <h2>Want to be a Guest?</h2>
+            <p>If you're an executive, artist, or industry leader, we'd love to host you.</p>
+            <a href="contact.html" class="cta-book" style="display: inline-block; margin-top: 20px;">Request a Feature</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 15px;">&copy; Silver Luxe Grooming 2025</p>
+            <p class="footer-note">Powered by Prestige</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;"><a href="terms.html" style="margin-right: 10px;">Terms</a> | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

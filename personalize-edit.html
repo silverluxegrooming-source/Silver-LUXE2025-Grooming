@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Your Profile - Silver Luxe Grooming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script> </head>
+<body>
+    
+    <header>
+        <div class="container nav-content" style="justify-content: center;">
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+            <div class="logo-text-center" style="position: static; transform: none; display: flex; pointer-events: auto;">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section section">
+        <div class="container">
+            <div class="auth-container" style="max-width: 800px; text-align: left;">
+                <h2 id="personalize-title" style="text-align: center;">Edit Your Profile</h2>
+                <p id="personalize-subtitle" style="text-align: center;">Update your preferences below.</p>
+                
+                <form class="booking-form" id="personalize-edit-form"> <label style="font-size: 1.5rem; margin-top: 30px;">Profile Picture</label>
+                    <hr class="gold-divider" style="margin: 15px 0;">
+                    <div class="profile-pic-uploader">
+                        <img src="https://via.placeholder.com/150" alt="Profile Picture" id="profile-pic-preview">
+                        <input type="file" id="profile-pic-upload" accept="image/*">
+                        <label for="profile-pic-upload" class="card-cta cta-transfer">Upload Image</label>
+                    </div>
+
+                    <label style="font-size: 1.5rem; margin-top: 30px;">Contact Details</label>
+                    <hr class="gold-divider" style="margin: 15px 0;">
+                    
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+                    
+                    <label for="gender">Title</label>
+                    <select id="gender" name="gender">
+                        <option value="Mr.">Mr.</option>
+                        <option value="Mrs.">Mrs.</option>
+                        <option value="Ms.">Ms.</option>
+                        <option value="Dr.">Dr.</option>
+                        <option value="Prof.">Prof.</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="phone">Phone Number (WhatsApp Enabled)</label>
+                    <input type="tel" id="phone" name="phone" placeholder="e.g., +234 813..." required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+
+                    <label style="font-size: 1.5rem; margin-top: 30px;">Default Booking Preferences</label>
+                    <hr class="gold-divider" style="margin: 15px 0;">
+
+                    <label for="location-type">Default Location</label>
+                    <select id="location-type" name="location-type">
+                        <option value="home">Home</option>
+                        <option value="office">Office</option>
+                        <option value="hotel">Hotel</option>
+                    </select>
+
+                    <label for="location">Default Address (Apt/Room #)</label>
+                    <input type="text" id="location" name="location" placeholder="Enter your full address" required>
+
+                    <label for="barber">Preferred Barber (Optional)</label>
+                    <select id="barber" name="barber">
+                        <option value="any">No Preference (First Available)</option>
+                        <option value="barber1">David</option> 
+                        <option value="barber2">Michael</option>
+                    </select>
+
+                    <label style="font-size: 1.5rem; margin-top: 30px;">Personalize Your Experience</label>
+                    <hr class="gold-divider" style="margin: 15px 0;">
+
+                    <label for="artist">Favorite Music Artist?</label>
+                    <input type="text" id="artist" name="artist" placeholder="e.g., Burna Boy, Davido, Wizkid...">
+
+                    <label for="tv-show">Favorite TV Show / Podcast?</label>
+                    <input type="text" id="tv-show" name="tv-show" placeholder="e.g., Sh**ged Married Annoyed, The Daily...">
+
+                    <label for="beverage">Preferred In-Van Beverage?</label>
+                    <select id="beverage" name="beverage">
+                        <option value="water">Still Water</option>
+                        <option value="sparkling">Sparkling Water</option>
+                        <option value="espresso">Espresso</option>
+                        <option value="champagne">Champagne (Black Card)</option>
+                        <option value="whiskey">Whiskey (Black Card)</option>
+                    </select>
+
+                    <label for="requests">Any Allergies or Style Notes?</label>
+                    <textarea id="requests" name="requests" placeholder="e.g., Allergic to nuts, prefer a high-fade..."></textarea>
+                    
+                    <button type="submit" class="card-cta cta-gold" style="width: 100%; margin-top: 30px; font-size: 1.2rem;">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

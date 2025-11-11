@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - Silver Luxe Grooming</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="container nav-content">
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+            <div class="logo-text-center">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+            <nav>
+                <ul class="desktop-links">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="schedule.html" class="nav-cta-book desktop-book-btn">Schedule Now</a></li>
+                </ul>
+                <ul class="slide-out-menu">
+                    <li class="nav-close-btn"><i class="fas fa-times"></i></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="bookings.html">Bookings</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="account.html" class="nav-account" style="display: none;">My Account</a></li>
+                    <li><a href="signin.html" class="nav-signin">Sign In / Sign Up</a></li>
+                    <li><a href="#" class="nav-signout" style="display: none;">Sign Out</a></li>
+                </ul>
+                <div class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero" id="account-hero">
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1 id="welcome-name">Welcome, Member</h1>
+                <p>Your private dashboard.</p>
+                <a href="#" id="sign-out-btn-desktop" class="card-cta cta-member" style="margin-top: 30px; border-width: 2px;">Sign Out</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="booking-checkout-layout">
+                <form class="booking-form" id="schedule-form">
+                    <h2>Schedule Your Next Appointment</h2>
+                    <p style="color: #999; margin-bottom: 20px;">As a member, you can book your next session with priority.</p>
+
+                    <label for="date">Preferred Date & Time</label>
+                    <div class="date-time-grid">
+                        <input type="date" id="date" name="date" required>
+                        <input type="time" id="time" name="time" required>
+                    </div>
+
+                    <label for="barber">Preferred Barber (from your profile)</label>
+                    <input type-="text" id="barber" name="barber" disabled> <label for="requests">Special Requests?</label>
+                    <textarea id="requests" name="requests" placeholder="e.g., Please bring the usual (Whiskey)"></textarea>
+                    
+                    <button type="submit" class="cta-book" style="width: 100%; margin-top: 20px;">Schedule Session</button>
+                </form>
+
+                <div class="order-summary">
+                    <h3>Your Profile</h3>
+                    <div class="profile-details">
+                        </div>
+                    <a href="personalize-edit.html" class="card-cta" style="width: 100%; text-align: center; margin-top: 20px;">Edit Profile</a>
+                </div>
+            </div>
+
+            <div id="upcoming-bookings" class="section">
+                <h2>Your Upcoming Sessions</h2>
+                <div id="booking-list">
+                    <p>You have no upcoming sessions scheduled.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+             </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

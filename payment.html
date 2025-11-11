@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Payment - Silver Luxe Grooming</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+<body>
+    
+    <header>
+        <div class="container nav-content" style="justify-content: center;">
+            <a href="index.html" class="logo-image-link">
+                <img src="images/logo.jpeg" alt="Silver Luxe Grooming Monogram">
+            </a>
+            <div class="logo-text-center" style="position: static; transform: none; display: flex; pointer-events: auto;">
+                <span class="logo-silverluxe">SILVER LUXE</span>
+                <span class="logo-grooming">GROOMING</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="auth-section section">
+        <div class="container">
+            <div class="auth-container" style="max-width: 600px;">
+                <h2 style="color: var(--color-gold);">Complete Your Payment</h2>
+                <p>You are one step away from securing your luxury appointment.</p>
+
+                <div class="order-summary" style="background: #0d0d0d; margin-top: 30px;">
+                    <h3>Your Order</h3>
+                    <div class="order-summary-items">
+                        <p class="cart-empty">Loading your cart...</p>
+                    </div>
+                    <div class="order-summary-total">
+                        <span>Total Due</span>
+                        <span id="summary-subtotal-price">₦0</span>
+                    </div>
+                </div>
+
+                <div class="payment-portal-placeholder">
+                <img src= images/paystack-logo.png alt="Paystack Logo" class="paystack-logo">
+                <p>Click the button below to proceed with secure card payment via Paystack.</p>
+                <button class="card-cta cta-gold" id="pay-with-card-btn" style="width: 100%; margin-top: 20px;">Pay Now with Card</button>
+                </div>
+
+                <div class="auth-divider">
+                    <span>or pay with</span>
+                </div>
+
+                <div class="bank-transfer-details">
+                    <h4>Bank Transfer</h4>
+                    <p>Please transfer the total amount to the account below. Your booking will be confirmed via email once payment is received.</p>
+                    
+                    <div class="bank-account">
+                        <strong>Bank:</strong> <span>OPAY(PAYCOM)</span><br>
+                        <strong>Account Name:</strong> <span>Silver Luxe Grooming</span><br>
+                        <strong>Account Number:</strong> <span>6142370809</span>
+                    </div>
+
+                    <p class="transfer-note"><strong>Important:</strong> Please use your **Full Name** as the payment reference.</p>
+                    
+                   <a href="confirmation-one-off.html" class="card-cta cta-transfer">I Have Made The Transfer</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
