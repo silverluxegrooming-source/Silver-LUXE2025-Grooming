@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBaSlider();
     initGalleryVideos();
     initPodcastVideos(); 
+    initPodcastAudioPlayer(); // <-- ADDED THIS
     handleAnchorLinks(); 
     initContactForm(); 
     initAuth(); 
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ---
-   FUNCTION: Saves selected plan to memory
+    FUNCTION: Saves selected plan to memory
 --- */
 function initPlanSelection() {
     const planButtons = document.querySelectorAll('.select-plan-btn');
@@ -51,7 +52,7 @@ function initPlanSelection() {
 }
 
 /* ---
-   UPDATED FUNCTION: Payment Page (Calls Edge Function)
+    UPDATED FUNCTION: Payment Page (Calls Edge Function)
 --- */
 async function initPaymentPage() {
     const payButton = document.getElementById('pay-with-card-btn');
@@ -156,7 +157,7 @@ async function initPaymentPage() {
 
 
 /* ---
-   FUNCTION: Check Auth State (Supabase)
+    FUNCTION: Check Auth State (Supabase)
 --- */
 async function checkAuthState() {
     const navAccount = document.querySelector('.nav-account');
@@ -192,7 +193,7 @@ async function checkAuthState() {
 
 
 /* ---
-   FUNCTION: Header Scroll
+    FUNCTION: Header Scroll
 --- */
 function initHeaderScroll() {
     const header = document.querySelector('header');
@@ -208,7 +209,7 @@ function initHeaderScroll() {
 }
 
 /* ---
-   FUNCTION: Fade-In Sections
+    FUNCTION: Fade-In Sections
 --- */
 function initFadeIn() {
     const sections = document.querySelectorAll('.section');
@@ -229,7 +230,7 @@ function initFadeIn() {
 }
 
 /* ---
-   FUNCTION: Confirmation Page
+    FUNCTION: Confirmation Page
 --- */
 function initConfirmationPage() {
     const countdownEl = document.getElementById('countdown-timer');
@@ -264,7 +265,7 @@ function initConfirmationPage() {
 }
 
 /* ---
-   FUNCTION: Account Page (Supabase)
+    FUNCTION: Account Page (Supabase)
 --- */
 async function initAccountPage() {
     const welcomeName = document.getElementById('welcome-name');
@@ -334,7 +335,7 @@ async function initAccountPage() {
 }
 
 /* ---
-   FUNCTION: Schedule Form (Supabase)
+    FUNCTION: Schedule Form (Supabase)
 --- */
 async function initScheduleForm() {
     const scheduleForm = document.getElementById('schedule-form');
@@ -376,7 +377,7 @@ async function initScheduleForm() {
 }
 
 /* ---
-   FUNCTION: ONE-OFF BOOKING FORM (Supabase)
+    FUNCTION: ONE-OFF BOOKING FORM (Supabase)
 --- */
 async function initBookingForm() {
     const bookingForm = document.querySelector('.booking-form[action="payment.html"]'); 
@@ -423,7 +424,7 @@ async function initBookingForm() {
 
 
 /* ---
-   FUNCTION: PERSONALIZE SETUP (Supabase)
+    FUNCTION: PERSONALIZE SETUP (Supabase)
 --- */
 async function initPersonalizeSetupForm() {
     const personalizeForm = document.getElementById('personalize-form'); 
@@ -471,7 +472,7 @@ async function initPersonalizeSetupForm() {
 }
 
 /* ---
-   FUNCTION: PERSONALIZE EDIT (Supabase)
+    FUNCTION: PERSONALIZE EDIT (Supabase)
 --- */
 async function initPersonalizeEditForm() {
     const personalizeForm = document.getElementById('personalize-edit-form'); 
@@ -569,7 +570,7 @@ async function initPersonalizeEditForm() {
 
 
 /* ---
-   UPDATED FUNCTION: AUTH (Sign In Page) - Supabase
+    UPDATED FUNCTION: AUTH (Sign In Page) - Supabase
 --- */
 async function initAuth() {
     const authContainer = document.querySelector('.auth-container');
@@ -665,7 +666,7 @@ async function initAuth() {
 
 
 /* ---
-   FUNCTION: Handle Anchor Links on Load (FIX FOR SCROLLING)
+    FUNCTION: Handle Anchor Links on Load (FIX FOR SCROLLING)
 --- */
 function handleAnchorLinks() {
     if (window.location.hash) {
@@ -688,7 +689,7 @@ function handleAnchorLinks() {
 
 
 /* ---
-   FUNCTION: Before/After Slider
+    FUNCTION: Before/After Slider
 --- */
 function initBaSlider() {
     const slider = document.querySelector('.ba-slider');
@@ -706,7 +707,7 @@ function initBaSlider() {
 }
 
 /* ---
-   FUNCTION: Gallery Video Hover
+    FUNCTION: Gallery Video Hover
 --- */
 function initGalleryVideos() {
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -726,7 +727,7 @@ function initGalleryVideos() {
 }
 
 /* ---
-   FUNCTION: MOBILE MENU TOGGLE
+    FUNCTION: MOBILE MENU TOGGLE
 --- */
 function initMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
@@ -743,7 +744,7 @@ function initMobileMenu() {
 }
 
 /* ---
-   FUNCTION: Cart System
+    FUNCTION: Cart System
 --- */
 function initCartSystem() {
     const isAccountPage = document.getElementById('account-hero');
@@ -884,7 +885,7 @@ function initCartSystem() {
                 if (action === 'increase') {
                     cart[id].qty++;
                 } else if (action === 'decrease') {
-                    cart[M.D].qty--;
+                    cart[id].qty--;
                     if (cart[id].qty === 0) {
                         delete cart[id];
                     }
@@ -900,7 +901,7 @@ function initCartSystem() {
 }
 
 /* ---
-   PAGE: PODCAST (Video Grid)
+    PAGE: PODCAST (Video Grid)
 --- */
 function initPodcastVideos() {
     const podcastItems = document.querySelectorAll('.podcast-item');
@@ -919,8 +920,46 @@ function initPodcastVideos() {
     });
 }
 
+// ---
+// NEW FUNCTION START
+// ---
 /* ---
-   FUNCTION: CONTACT FORM (Supabase)
+    PAGE: PODCAST (Audio Player)
+--- */
+function initPodcastAudioPlayer() {
+    const playBtn = document.getElementById('podcast-play-btn');
+    const audioPlayer = document.getElementById('main-podcast-player');
+
+    if (!playBtn || !audioPlayer) {
+        return; // Only run on the podcast page
+    }
+
+    // 1. Handle the main Play/Pause click
+    playBtn.addEventListener('click', () => {
+        if (audioPlayer.paused) {
+            audioPlayer.play();
+            playBtn.classList.remove('fa-play-circle');
+            playBtn.classList.add('fa-pause-circle');
+        } else {
+            audioPlayer.pause();
+            playBtn.classList.remove('fa-pause-circle');
+            playBtn.classList.add('fa-play-circle');
+        }
+    });
+
+    // 2. Reset the icon when the audio finishes
+    audioPlayer.addEventListener('ended', () => {
+        playBtn.classList.remove('fa-pause-circle');
+        playBtn.classList.add('fa-play-circle');
+    });
+}
+// ---
+// NEW FUNCTION END
+// ---
+
+
+/* ---
+    FUNCTION: CONTACT FORM (Supabase)
 --- */
 async function initContactForm() {
     const contactForm = document.querySelector('.contact-form');
