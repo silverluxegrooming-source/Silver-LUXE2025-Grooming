@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initBaSlider();
     initGalleryVideos();
     initPodcastVideos(); 
-    initPodcastAudioPlayer(); // <-- ADDED THIS
     handleAnchorLinks(); 
     initContactForm(); 
     initAuth(); 
@@ -34,10 +33,46 @@ document.addEventListener('DOMContentLoaded', () => {
     initAccountPage(); 
     initScheduleForm(); 
     initPaymentPage(); 
+    initAudioPlayer(); // <-- THIS IS THE NEW FUNCTION CALL
 });
 
 /* ---
-    FUNCTION: Saves selected plan to memory
+   NEW FUNCTION: Podcast Audio Player
+--- */
+function initAudioPlayer() {
+    const player = document.getElementById('main-podcast-player');
+    const playBtn = document.getElementById('podcast-play-btn');
+
+    if (!player || !playBtn) {
+        return; // Only run on podcast page
+    }
+
+    playBtn.addEventListener('click', () => {
+        if (player.paused) {
+            // If paused, play it
+            player.play();
+            // Change icon to 'pause'
+            playBtn.classList.remove('fa-play-circle');
+            playBtn.classList.add('fa-pause-circle');
+        } else {
+            // If playing, pause it
+            player.pause();
+            // Change icon to 'play'
+            playBtn.classList.remove('fa-pause-circle');
+            playBtn.classList.add('fa-play-circle');
+        }
+    });
+
+    // Also reset the icon when the song ends
+    player.addEventListener('ended', () => {
+        playBtn.classList.remove('fa-pause-circle');
+        playBtn.classList.add('fa-play-circle');
+    });
+}
+
+
+/* ---
+   FUNCTION: Saves selected plan to memory
 --- */
 function initPlanSelection() {
     const planButtons = document.querySelectorAll('.select-plan-btn');
@@ -52,7 +87,7 @@ function initPlanSelection() {
 }
 
 /* ---
-    UPDATED FUNCTION: Payment Page (Calls Edge Function)
+   UPDATED FUNCTION: Payment Page (Calls Edge Function)
 --- */
 async function initPaymentPage() {
     const payButton = document.getElementById('pay-with-card-btn');
@@ -133,9 +168,45 @@ async function initPaymentPage() {
             planId: planId, 
             email: user.email
         };
+
+        // --- NEW: Add click event listener to save the plan ---
+        payButton.addEventListener('click', async () => {
+            payButton.disabled = true;
+            payButton.innerText = "Processing...";
+
+            // --- SAVE THE PLAN TO THE USER'S PROFILE ---
+            const { error: updateError } = await supabaseClient
+                .from('users')
+                .update({ membership_plan: planId }) // Save the plan name
+                .eq('id', user.id);
+
+            if (updateError) {
+                console.error("Error updating user plan: ", updateError);
+                alert("Error: " + updateError.message);
+                payButton.disabled = false;
+                payButton.innerText = "Pay Now with Card";
+                return;
+            }
+            // --- END SAVE PLAN ---
+
+            try {
+                // Call our secure Edge Function
+                const { data, error } = await supabaseClient.functions.invoke('create-payment-link', {
+                    body: JSON.stringify(paymentPayload)
+                });
+                if (error) throw error;
+                window.location.href = data.authorization_url;
+            } catch (error) {
+                console.error("Error creating payment link: ", error);
+                alert("Error: " + error.message);
+                payButton.disabled = false;
+                payButton.innerText = "Pay Now with Card";
+            }
+        });
+        return; // Exit here to avoid adding the second listener
     }
         
-    // Add the click listener for payment
+    // Add the click listener for ONE-OFF bookings
     payButton.addEventListener('click', async () => {
         payButton.disabled = true;
         payButton.innerText = "Processing...";
@@ -157,7 +228,7 @@ async function initPaymentPage() {
 
 
 /* ---
-    FUNCTION: Check Auth State (Supabase)
+   FUNCTION: Check Auth State (Supabase)
 --- */
 async function checkAuthState() {
     const navAccount = document.querySelector('.nav-account');
@@ -193,7 +264,7 @@ async function checkAuthState() {
 
 
 /* ---
-    FUNCTION: Header Scroll
+   FUNCTION: Header Scroll
 --- */
 function initHeaderScroll() {
     const header = document.querySelector('header');
@@ -209,7 +280,7 @@ function initHeaderScroll() {
 }
 
 /* ---
-    FUNCTION: Fade-In Sections
+   FUNCTION: Fade-In Sections
 --- */
 function initFadeIn() {
     const sections = document.querySelectorAll('.section');
@@ -230,9 +301,14 @@ function initFadeIn() {
 }
 
 /* ---
-    FUNCTION: Confirmation Page
+   FUNCTION: Confirmation Page
 --- */
 function initConfirmationPage() {
+    // This stops the function from running on our new one-off page
+    if (window.location.pathname.includes('confirmation-one-off.html')) {
+        return;
+    }
+
     const countdownEl = document.getElementById('countdown-timer');
     if (!countdownEl) { return; }
     let timeLeft = 900; 
@@ -265,7 +341,7 @@ function initConfirmationPage() {
 }
 
 /* ---
-    FUNCTION: Account Page (Supabase)
+   FUNCTION: Account Page (Supabase)
 --- */
 async function initAccountPage() {
     const welcomeName = document.getElementById('welcome-name');
@@ -302,7 +378,10 @@ async function initAccountPage() {
                 <div class="profile-detail-item"><span>Artist</span> <span>${data.fav_artist || '...'}</span></div>
             `;
             if(scheduleForm) {
-                scheduleForm.querySelector('#barber').value = data.preferred_barber || 'No Preference';
+                // Pre-fill the schedule form with user's defaults
+                scheduleForm.querySelector('#barber').value = data.preferred_barber || 'any';
+                scheduleForm.querySelector('#location-type').value = data.default_location_type || 'home';
+                scheduleForm.querySelector('#location').value = data.default_address || '';
             }
         } else {
             welcomeName.innerText = "Welcome, Client";
@@ -335,30 +414,40 @@ async function initAccountPage() {
 }
 
 /* ---
-    FUNCTION: Schedule Form (Supabase)
+   UPDATED FUNCTION: Schedule Form (Supabase)
 --- */
 async function initScheduleForm() {
     const scheduleForm = document.getElementById('schedule-form');
     if (!scheduleForm) { return; }
+
     scheduleForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const submitButton = scheduleForm.querySelector('button[type="submit"]');
         const { data: { user } } = await supabaseClient.auth.getUser();
+
         if (!user) {
             alert("You must be signed in to schedule.");
             return;
         }
+        
+        // --- UPDATED: Reads all new form fields ---
         const formData = {
             date: scheduleForm.querySelector('#date').value,
             time: scheduleForm.querySelector('#time').value,
+            preferred_barber: scheduleForm.querySelector('#barber').value,
+            location_type: scheduleForm.querySelector('#location-type').value,
+            full_address: scheduleForm.querySelector('#location').value,
             notes: scheduleForm.querySelector('#requests') ? scheduleForm.querySelector('#requests').value : '',
-            location: scheduleForm.querySelector('#location') ? scheduleForm.querySelector('#location').value : 'On File',
-            user_id: user.id, 
+            user_id: user.id, // This is your User ID!
             status: "Confirmed", 
         };
+        // --- END OF UPDATE ---
+
         submitButton.disabled = true;
         submitButton.innerText = 'Scheduling...';
+
         const { error } = await supabaseClient.from('schedules').insert(formData);
+
         if (error) {
             alert("Error: " + error.message);
             submitButton.disabled = false;
@@ -368,6 +457,7 @@ async function initScheduleForm() {
             submitButton.disabled = false;
             submitButton.innerText = 'Schedule Session';
             scheduleForm.reset();
+            // This will refresh the "Your Upcoming Sessions" list
             if(document.getElementById('booking-list')) {
                 document.getElementById('booking-list').innerHTML = '<p>Your new session is saved. Refreshing...</p>';
                 setTimeout(() => window.location.reload(), 1000);
@@ -377,7 +467,7 @@ async function initScheduleForm() {
 }
 
 /* ---
-    FUNCTION: ONE-OFF BOOKING FORM (Supabase)
+   FUNCTION: ONE-OFF BOOKING FORM (Supabase)
 --- */
 async function initBookingForm() {
     const bookingForm = document.querySelector('.booking-form[action="payment.html"]'); 
@@ -404,7 +494,6 @@ async function initBookingForm() {
             status: "Pending Payment" 
         };
 
-        // <-- FIX: Save the email for the payment page
         localStorage.setItem('oneOffEmail', formData.email); 
 
         submitButton.disabled = true;
@@ -416,7 +505,6 @@ async function initBookingForm() {
             submitButton.disabled = false;
             submitButton.innerText = 'Confirm & Request Booking';
         } else {
-            // We pass the new booking ID to the payment page
             window.location.href = `payment.html?bookingId=${data.id}`;
         }
     });
@@ -424,7 +512,7 @@ async function initBookingForm() {
 
 
 /* ---
-    FUNCTION: PERSONALIZE SETUP (Supabase)
+   FUNCTION: PERSONALIZE SETUP (Supabase)
 --- */
 async function initPersonalizeSetupForm() {
     const personalizeForm = document.getElementById('personalize-form'); 
@@ -472,7 +560,7 @@ async function initPersonalizeSetupForm() {
 }
 
 /* ---
-    FUNCTION: PERSONALIZE EDIT (Supabase)
+   FUNCTION: PERSONALIZE EDIT (Supabase)
 --- */
 async function initPersonalizeEditForm() {
     const personalizeForm = document.getElementById('personalize-edit-form'); 
@@ -570,7 +658,7 @@ async function initPersonalizeEditForm() {
 
 
 /* ---
-    UPDATED FUNCTION: AUTH (Sign In Page) - Supabase
+   UPDATED FUNCTION: AUTH (Sign In Page) - Supabase
 --- */
 async function initAuth() {
     const authContainer = document.querySelector('.auth-container');
@@ -666,7 +754,7 @@ async function initAuth() {
 
 
 /* ---
-    FUNCTION: Handle Anchor Links on Load (FIX FOR SCROLLING)
+   FUNCTION: Handle Anchor Links on Load (FIX FOR SCROLLING)
 --- */
 function handleAnchorLinks() {
     if (window.location.hash) {
@@ -689,7 +777,7 @@ function handleAnchorLinks() {
 
 
 /* ---
-    FUNCTION: Before/After Slider
+   FUNCTION: Before/After Slider
 --- */
 function initBaSlider() {
     const slider = document.querySelector('.ba-slider');
@@ -707,7 +795,7 @@ function initBaSlider() {
 }
 
 /* ---
-    FUNCTION: Gallery Video Hover
+   FUNCTION: Gallery Video Hover
 --- */
 function initGalleryVideos() {
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -727,7 +815,7 @@ function initGalleryVideos() {
 }
 
 /* ---
-    FUNCTION: MOBILE MENU TOGGLE
+   FUNCTION: MOBILE MENU TOGGLE
 --- */
 function initMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
@@ -744,7 +832,7 @@ function initMobileMenu() {
 }
 
 /* ---
-    FUNCTION: Cart System
+   FUNCTION: Cart System
 --- */
 function initCartSystem() {
     const isAccountPage = document.getElementById('account-hero');
@@ -885,6 +973,7 @@ function initCartSystem() {
                 if (action === 'increase') {
                     cart[id].qty++;
                 } else if (action === 'decrease') {
+                    // --- THIS IS THE TYPO FIX ---
                     cart[id].qty--;
                     if (cart[id].qty === 0) {
                         delete cart[id];
@@ -901,7 +990,7 @@ function initCartSystem() {
 }
 
 /* ---
-    PAGE: PODCAST (Video Grid)
+   PAGE: PODCAST (Video Grid)
 --- */
 function initPodcastVideos() {
     const podcastItems = document.querySelectorAll('.podcast-item');
@@ -920,46 +1009,8 @@ function initPodcastVideos() {
     });
 }
 
-// ---
-// NEW FUNCTION START
-// ---
 /* ---
-    PAGE: PODCAST (Audio Player)
---- */
-function initPodcastAudioPlayer() {
-    const playBtn = document.getElementById('podcast-play-btn');
-    const audioPlayer = document.getElementById('main-podcast-player');
-
-    if (!playBtn || !audioPlayer) {
-        return; // Only run on the podcast page
-    }
-
-    // 1. Handle the main Play/Pause click
-    playBtn.addEventListener('click', () => {
-        if (audioPlayer.paused) {
-            audioPlayer.play();
-            playBtn.classList.remove('fa-play-circle');
-            playBtn.classList.add('fa-pause-circle');
-        } else {
-            audioPlayer.pause();
-            playBtn.classList.remove('fa-pause-circle');
-            playBtn.classList.add('fa-play-circle');
-        }
-    });
-
-    // 2. Reset the icon when the audio finishes
-    audioPlayer.addEventListener('ended', () => {
-        playBtn.classList.remove('fa-pause-circle');
-        playBtn.classList.add('fa-play-circle');
-    });
-}
-// ---
-// NEW FUNCTION END
-// ---
-
-
-/* ---
-    FUNCTION: CONTACT FORM (Supabase)
+   FUNCTION: CONTACT FORM (Supabase)
 --- */
 async function initContactForm() {
     const contactForm = document.querySelector('.contact-form');

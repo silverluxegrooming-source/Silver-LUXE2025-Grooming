@@ -72,9 +72,26 @@
                         <input type="time" id="time" name="time" required>
                     </div>
 
-                    <label for="barber">Preferred Barber (from your profile)</label>
+                    <label for="barber">Preferred Barber</label>
+                    <select id="barber" name="barber">
+                        <option value="any">No Preference (First Available)</option>
+                        <option value="barber1">David</option> 
+                        <option value="barber2">Michael</option>
+                    </select>
+
+                    <label for="location-type">Location Type</label>
+                    <select id="location-type" name="location-type">
+                    <option value="home">Home</option>
+                    <option value="office">Office</option>
+                    <option value="hotel">Hotel</option>
+                    </select>
+
+                    <label for="location">Full Address (Apt/Room #)</label>
+                    <input type="text" id="location" name="location" placeholder="Enter the full address for this appointment" required>
+
                     <input type-="text" id="barber" name="barber" disabled> <label for="requests">Special Requests?</label>
                     <textarea id="requests" name="requests" placeholder="e.g., Please bring the usual (Whiskey)"></textarea>
+
                     
                     <button type="submit" class="cta-book" style="width: 100%; margin-top: 20px;">Schedule Session</button>
                 </form>
